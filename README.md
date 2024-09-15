@@ -3,14 +3,17 @@ Repositorio para el trabajo final de WEB 2
 
 
 ### RESTAURANTE y PLATOS ###
-Sistema de gestión para uin restaurante donde cada plato pertenece a una categoría de específica del menú.
-Las realciones pertenecen a una cateogiría, pero una cateogiría puede tener múltiples platos (1:N). Cada cateogiría del menú (entrada, plato principal, postre, bebida), tiene "X" cantidad de opciones.
+Este proyecto es un sistema de gestión para un restaurante que organiza los platos de un menú en diferentres categorías.
+La relación entre platos y las categorías es de uno a muchos (1:N). Cada plato pertenece a una única cateogiría, pero una categoría puede tener múltiples platos.
+Estructura:
+Categorías del Menú: cada categoría puede representar un tipo de plato como entrada, plato principal, postre o bebida.
+Platos: cada plato tiene un nombre, precio y está asociado a una categoría específica.
 Tablas:
   a) Platos:
         ID(id unico del plato): INT número que identifica los platos de forma única.
         Nombre_Plato: VARCHAR.  
         Precio: DECIMAL.
-        Categoria_ID: INT y sus valores se limitan a los ID existentes en la tabla Categorias (calve foranea).
+        Categoria_ID: INT (calve foranea), relacionado con el ID de la tabla Categorías.
   b) Categorias: 
-        ID: INT (clave primaria)
-        Nombre_Categoria: VARCHAR
+        ID: INT (clave primaria), número único que identifica cada categoría.
+        Nombre_Categoria: VARCHAR, nombre de las categorías.
