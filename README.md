@@ -1,5 +1,4 @@
 # TPE-WEB2
-Repositorio para el trabajo final de WEB 2
 
 Iñaki Arraztio, DNI: 41900430
 Henry Melchior, DNI : 42093457
