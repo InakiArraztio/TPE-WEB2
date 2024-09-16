@@ -1,6 +1,9 @@
 # TPE-WEB2
 Repositorio para el trabajo final de WEB 2
 
+Iñaki Arraztio, DNI: 41900430
+Henry Melchior, DNI : 42093457
+
 
 ### RESTAURANTE y PLATOS ###
 Este proyecto es un sistema de gestión para un restaurante que organiza los platos de un menú en diferentres categorías.
@@ -17,4 +20,6 @@ Tablas:
   b) Categorias: 
         ID: INT (clave primaria), número único que identifica cada categoría.
         Nombre_Categoria: VARCHAR, nombre de las categorías.
+
+# DIAGRAMA 
 
