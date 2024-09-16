@@ -17,3 +17,4 @@ Tablas:
   b) Categorias: 
         ID: INT (clave primaria), número único que identifica cada categoría.
         Nombre_Categoria: VARCHAR, nombre de las categorías.
+
