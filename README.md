@@ -22,3 +22,4 @@ Tablas:
 
 # DIAGRAMA 
 
+![Diagrama](https://github.com/user-attachments/assets/cfe99dc7-2f12-4c82-9338-66048ba8a40d)
