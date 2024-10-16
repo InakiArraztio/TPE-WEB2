@@ -1,18 +1,17 @@
 <?php
 require_once 'app/controllers/rest.controller.php';
-
+require_once 'app/views/rest.view.php';
 
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
 
 // el router va a leer la action desde el paramtro "action"
-
-$action = 'hogar'; // accion por defecto
+$action = 'home'; // accion por defecto
 if (!empty( $_GET['action'])) {
     $action = $_GET['action'];
 }
 
 // listar    ->        mostrarProductos();
-// listar individual ->mostrarProducto($id)
+// listar individual -> mostrarProducto($id)
 // agregar   ->        agregarProducto();
 // eliminar/:ID  ->    quitarProducto($id);
 // modificar/:ID  ->   modificarProducto($id);
@@ -20,26 +19,32 @@ if (!empty( $_GET['action'])) {
 $params = explode('/', $action);
 
 switch ($params[0]) { // en la primer posicion tengo la accion real
-    case 'hogar':
-        mostrarDB(); // muestra todas los productos
+    case 'home':
+        $controller = new RestaurantController();
+        $controller->mostrarDB(); // muestra todas los productos
         break;
 
     case 'producto':
-        mostrarProducto($params[1]); // muestra un producto
+        $controller = new RestaurantController();
+        $controller->mostrarProducto($params[1]); // muestra un producto
         break;
 
     case 'agregar':
-        agregarProducto();
+        $controller = new RestaurantController();
+        $controller->agregarProducto();
         break;
 
     case 'eliminar':
-        quitarProducto($params[1]);
+        $controller = new RestaurantController();
+        $controller->quitarProducto($params[1]);
         break;
         
     case 'modificar':
-        modificarProducto($params[1]);
+        $controller = new RestaurantController();
+        $controller->modificarProducto($params[1]);
         break;
     default: 
-        mostrarError();
+        $view = new RestaurantView();
+        $view->mostrarError($error);
         break;
 }
