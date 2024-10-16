@@ -1,8 +1,7 @@
 <?php
 require_once 'app/views/rest.view.php';
 require_once 'app/models/rest.model.php';
-
-class RestaurantController{
+class CategoriasController{
     //el controlador siempre usa atributos y vista
     private $model;
     private $view;
@@ -35,7 +34,7 @@ class RestaurantController{
 
     function agregarProducto(){
         //Lista de campos requeridos
-        /*$camposRequeridos = ['nombre',  'precio', 'categoria'];
+        $camposRequeridos = ['nombre',  'precio', 'categoria'];
 
         //Validacion de campos
         foreach($camposRequeridos as $campo) {
@@ -43,24 +42,21 @@ class RestaurantController{
                 $this->view->mostrarError($campo . 'no especificado');
                 return;
             }
-        }*/
-        //Asignacion de variables
-        if(isset($_POST['nombre'])&&isset($_POST['precio'])&&isset($_POST['categoria'])){
-            $nombre = $_POST['nombre'];
-            $precio = $_POST['precio'];
-            $categoria = $_POST['categoria'];
-            $id = $this->model->insertarProducto($nombre, $precio, $categoria);
-
-            if ($id) {//si es 0 "sale" por el else 
-                header('Location: '.BASE_URL);
-            } else {
-                echo "Error al insertar el producto";
-            }
         }
-        
+        //Asignacion de variables
+        $nombre = $_POST['nombre'];
+        $precio = $_POST['precio'];
+        $categoria = $_POST['categoria'];
 
+        var_dump($nombre, $precio, $categoria);
         //Inserccion del producto
-        
+        $id = $this->model->insertarProducto($nombre, $precio, $categoria);
+
+        if ($id) {//si es 0 "sale" por el else 
+            header('Location: ' . BASE_URL);
+        } else {
+            echo "Error al insertar el producto";
+        }
     }
 
     function  quitarProducto($id){

@@ -3,23 +3,24 @@
 require_once 'app/controllers/rest.controller.php';
 
 class RestaurantModel{
+    private $db;
+    function __construct(){
+        $this->db = $this->connectionDb();
+    }
 
     private function connectionDb(){
-        $db = new PDO('mysql:host=localhost;' . 'dbname=restaurante;charset=utf8', 'root', '');
-       return $db;
+       return new PDO('mysql:host=localhost;' . 'dbname=restaurante;charset=utf8', 'root', '');
     }
     
-    function getCategorias(){
-        $db = $this->connectionDb();
-        $query =  $query = $db->prepare('SELECT * FROM platos');//TENIA QUE LLAMAR A platos NO a categorias
+    function getCategorias(){//get plato
+        $query = $this->db->prepare('SELECT * FROM platos');//TENIA QUE LLAMAR A platos NO a categorias
         $query->execute();
         $categorias = $query->fetchAll(PDO::FETCH_OBJ);
         return $categorias;
     }
     
     function obtenerProductosPorCategoria($categoria){
-        $db = $this->connectionDb();
-        $query = $db->prepare('SELECT * FROM platos WHERE id_categoria = ?');
+        $query = $this->db->prepare('SELECT * FROM platos WHERE id_categoria = ?');
         $query->execute([$categoria]);
         $productos = $query->fetchAll(PDO::FETCH_OBJ);
     
@@ -27,16 +28,13 @@ class RestaurantModel{
     }
     
     function insertarProducto($nombre, $precio, $categoria){
-        $db= $this->connectionDb();
-        $query = $db->prepare('INSERT INTO platos (nombre_plato, precio, id_categoria) VALUES (?,?,?)');
+        $query = $this->db->prepare('INSERT INTO platos (nombre_plato, precio, id_categoria) VALUES (?,?,?)'); 
         $query->execute([$nombre, $precio, $categoria]);
-    
-        return $db->lastInsertId();
+        return $this->db->lastInsertId();
     }
     
     function eliminarProducto($id){
-        $db = $this->connectionDb();
-        $query = $db->prepare('DELETE FROM platos WHERE id_plato =?');
+        $query = $this->db->prepare('DELETE FROM platos WHERE id_plato = ?');
         $query->execute([$id]);
     }
 }
