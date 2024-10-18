@@ -1,7 +1,7 @@
 <?php
 require_once('libs\smarty\libs\Smarty.class.php');
 
-class RestaurantView {
+class CategoriaView {
     private $smarty;
 
     function __construct() {
@@ -15,8 +15,8 @@ class RestaurantView {
 
     // Función para mostrar platos
     function mostrarCategoria($categoria) {
-        $this->smarty->assign('categoria', $categoria);
-        $this->smarty->display('templates/listarcategoria.tpl');
+        $this->smarty->assign('categorias', $categoria);
+        $this->smarty->display('templates\listarcategoria.tpl');
     }
 }
 ?>

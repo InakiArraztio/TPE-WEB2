@@ -1,4 +1,4 @@
-</main>
+
 <!-- fin main container -->
 
 <!-- main footer -->

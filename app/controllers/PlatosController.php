@@ -1,20 +1,23 @@
 <?php
-require_once 'app\views\rest.view.php';
+require_once 'app\views\PlatosView.php';
 require_once 'app\models\PlatosModel.php';
 //falta
 class PlatosController{
     //el controlador siempre usa atributos y vista
     private $model;
     private $view;
+    private $categoria;
 
     function __construct(){
-        $this->view = new RestaurantView();
+        $this->view = new PlatosView();
         $this->model = new PlatosModel();
+        $this->categoriaModel = new CategoriasModel();
     }
 
     function mostrarPlato(){
+        $categorias=$this->categoriaModel->getCategorias();
         $platos = $this->model->getPlatos();
-        $this->view->mostrarPlatos($platos);
+        $this->view->mostrarPlatos($platos,$categorias);
     }
 
    /* function mostrarPlato(){
@@ -27,7 +30,7 @@ class PlatosController{
         $this->view->mostrarPlatos($platos);
     }*/
 
-    function agregarProducto(){
+    function agregarPlato(){
         //Lista de campos requeridos
         /*$camposRequeridos = ['nombre',  'precio', 'categoria'];
 
@@ -39,14 +42,13 @@ class PlatosController{
             }
         }*/
         //Asignacion de variables
-        if(isset($_POST['nombre'])&&isset($_POST['precio'])&&isset($_POST['categoria'])){
+        if(isset($_POST['nombre'])&&isset($_POST['precio'])&&isset($_POST['id_categoria'])){
             $nombre = $_POST['nombre'];
             $precio = $_POST['precio'];
-            $categoria = $_POST['categoria'];
-            $id = $this->model->insertarProducto($nombre, $precio, $categoria);
-
+            $categoria = $_POST['id_categoria'];
+            $id = $this->model->insertarPlato($nombre, $precio, $categoria);
             if ($id) {//si es 0 "sale" por el else 
-                header('Location: '.BASE_URL);
+                header("Location: listar_plato");
             } else {
                 echo "Error al insertar el producto";
             }
@@ -57,8 +59,8 @@ class PlatosController{
         
     }
 
-    function  quitarProducto($id){
+    function  quitarPlato($id){
         $this->model->eliminarPlato($id);
-        header('Location: ' . BASE_URL);
+        header("Location: ../listar_plato");
     }
 }

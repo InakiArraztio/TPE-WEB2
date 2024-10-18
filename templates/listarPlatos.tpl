@@ -1,3 +1,5 @@
+{include file="header.tpl"}
+{include file="formPlato.tpl"}
 <table>
     <thead>
         <tr>
@@ -12,12 +14,19 @@
         <tr>
             <td>{$plato->nombre_plato}</td>
             <td>{$plato->precio}</td>
-            <td>{$plato->id_categoria}</td>
             <td>
-                <a href='modificar/{$plato->id_plato}' class='btn btn-primary'>Modificar</a>
-                <a href='eliminar/{$plato->id_plato}' class='btn btn-danger'>Eliminar</a>
+            {foreach from=$categorias item=categoria}
+                {if $categoria->id_categoria == $plato->id_categoria}
+                    {$categoria->tipo_categoria}  <!-- Muestra el tipo de categoría correspondiente -->
+                {/if}
+            {/foreach}
+            </td>
+            <td>
+                <a href='modificar_plato/{$plato->id_plato}' class='btn btn-primary'>Modificar</a>
+                <a href='eliminar_plato/{$plato->id_plato}' class='btn btn-danger'>Eliminar</a>
             </td>
         </tr>  
     {/foreach}
     </tbody>
 </table>
+{include file="footer.tpl"}

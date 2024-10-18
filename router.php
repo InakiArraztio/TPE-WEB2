@@ -1,12 +1,11 @@
 <?php
 require_once 'app\controllers\PlatosController.php';
-require_once 'app\controllers\CategoriaController.php';
+require_once 'app\controllers\CategoriasController.php';
 
 
 
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
-
-$action = 'listar';//accion por defecto
+$action = 'listar_categoria';//accion por defecto
 // lee la acción
 if (!empty($_GET['action'])) {
     $action = $_GET['action'];
@@ -18,24 +17,35 @@ if (!empty($_GET['action'])) {
 $params = explode('/', $action);
 
 switch ($params[0]) { // en la primer posicion tengo la accion real
-    /*case 'listar':
+    case 'listar_categoria':
         $controller = new CategoriasController();
         $controller->mostrarCategoria(); // muestra todas los productos
-        break;*/
-    case 'listar':
+        break;
+    case 'eliminar_categoria':
+        $controller = new CategoriasController();
+        $controller->quitarCategoria($params[1]);
+        break;
+    case 'agregar_categoria':
+        echo "hola";
+        $controller = new CategoriasController();
+        $controller->agregarCategoria();
+        break;
+        
+    case 'listar_plato':
         $controller = new PlatosController();
         $controller->mostrarPlato(); // muestra todas los productos
         break;
-    /*case 'agregar':
-        echo "hola";
-        $controller = new PlatosController();
-        $controller->agregarProducto();
-        break;
     
-    case 'eliminar':
+    case 'eliminar_plato':
         $controller = new PlatosController();
-        $controller->quitarProducto($params[1]);
+        $controller->quitarPlato($params[1]);
         break;
+
+    case 'agregar_plato':
+        $controller = new PlatosController();
+        $controller->agregarPlato();
+        break;
+          
     
     /*case 'producto':
         $controller = new RestaurantController();

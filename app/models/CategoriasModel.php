@@ -1,7 +1,4 @@
 <?php
-//Maneja la comunicacion con la BD
-require_once 'app/controllers/rest.controller.php';
-
 class CategoriasModel{
     private $db;
     function __construct(){
@@ -19,13 +16,13 @@ class CategoriasModel{
     }
     
     function insertarCategoria($categoria){
-        $query = $this->db->prepare('INSERT INTO platos (nom_categoria) VALUES (?)'); 
+        $query = $this->db->prepare('INSERT INTO categorias (tipo_categoria) VALUES (?)'); 
         $query->execute([$categoria]);
         return $this->db->lastInsertId();
     }
     
     function eliminarCategoria($id){
-        $query = $this->db->prepare('DELETE FROM categorias WHERE id = ?');
+        $query = $this->db->prepare('DELETE FROM categorias WHERE id_categoria = ?');
         $query->execute([$id]);
     }
     

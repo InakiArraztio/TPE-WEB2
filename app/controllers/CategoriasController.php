@@ -1,13 +1,13 @@
 <?php
-require_once 'app\views\rest.view.php';
+require_once 'app\views\CategoriaView.php';
 require_once 'app\models\CategoriasModel.php';
 class CategoriasController{
     //el controlador siempre usa atributos y vista
     private $model;
-    private $view;
-
+    private $viewCategoria;
+    private $viewPlato;
     function __construct(){
-        $this->view = new RestaurantView();
+        $this->view = new CategoriaView();
         $this->model = new CategoriasModel();
     }
 
@@ -29,6 +29,11 @@ class CategoriasController{
             }
         }
     }
+    /*function mostrarCategoriaForm(){
+        $viewPlato=new PlatosView();
+        $categoria = $this->model->getCategorias();
+        $viewPlato->listarForm($categoria);
+    }*/
 
     function  quitarCategoria($id){
         $this->model->eliminarCategoria($id);
