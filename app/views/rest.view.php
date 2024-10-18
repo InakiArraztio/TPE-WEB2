@@ -1,7 +1,13 @@
 <?php
 require_once 'app/controllers/rest.controller.php';
+require_once 'libs\smarty\libs\Smarty.class.php';
 
 class RestaurantView{
+    private $smarty
+
+    function __construct(){
+        $this->smarty= new Smarty();
+    }
 
     // Función para mostrar errores
     function mostrarError($error) {
