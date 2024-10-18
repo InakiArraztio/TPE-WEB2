@@ -1,6 +1,7 @@
 <?php
 require_once 'app\controllers\PlatosController.php';
-require_once '.\libs\smarty\libs\Smarty.class.php';
+require_once 'app\controllers\CategoriaController.php';
+
 
 
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
@@ -17,18 +18,22 @@ if (!empty($_GET['action'])) {
 $params = explode('/', $action);
 
 switch ($params[0]) { // en la primer posicion tengo la accion real
+    /*case 'listar':
+        $controller = new CategoriasController();
+        $controller->mostrarCategoria(); // muestra todas los productos
+        break;*/
     case 'listar':
         $controller = new PlatosController();
-        $controller->mostrarDB(); // muestra todas los productos
+        $controller->mostrarPlato(); // muestra todas los productos
         break;
-    case 'agregar':
+    /*case 'agregar':
         echo "hola";
-        $controller = new RestaurantController();
+        $controller = new PlatosController();
         $controller->agregarProducto();
         break;
     
     case 'eliminar':
-        $controller = new RestaurantController();
+        $controller = new PlatosController();
         $controller->quitarProducto($params[1]);
         break;
     

@@ -2,7 +2,7 @@
 //Maneja la comunicacion con la BD
 require_once 'app/controllers/rest.controller.php';
 
-class RestaurantModel{
+class CategoriasModel{
     private $db;
     function __construct(){
         $this->db = $this->connectionDb();
@@ -12,11 +12,10 @@ class RestaurantModel{
        return new PDO('mysql:host=localhost;' . 'dbname=restaurante;charset=utf8', 'root', '');
     }
     
-    function getCategorias(){//get plato
-        $query = $this->db->prepare('SELECT * FROM categorias');//TENIA QUE LLAMAR A platos NO a categorias
+    function getCategorias() {
+        $query = $this->db->prepare('SELECT * FROM categorias');
         $query->execute();
-        $categorias = $query->fetchAll(PDO::FETCH_OBJ);
-        return $categorias;
+        return $query->fetchAll(PDO::FETCH_OBJ); // Asegúrate de que hay datos en la tabla
     }
     
     function insertarCategoria($categoria){

@@ -1,5 +1,5 @@
 <?php
-require_once 'app/views/rest.view.php';
+require_once 'app\views\rest.view.php';
 require_once 'app\models\CategoriasModel.php';
 class CategoriasController{
     //el controlador siempre usa atributos y vista
@@ -8,24 +8,14 @@ class CategoriasController{
 
     function __construct(){
         $this->view = new RestaurantView();
-        $this->model = new RestaurantModel();
-    }
-
-    function mostrarDB(){
-        $productos = $this->model->getCategorias();
+        $this->model = new CategoriasModel();
     }
 
     function mostrarCategoria(){
-        //Verificar datos obligatorios y valida la entrada de usuarios
-        if ((!isset($_GET['categoria'])) || empty($_GET['categoria'])) {
-            $this->view->mostrarError('Categoría no especificada');
-            return;
-        }
-
-        //Obtiene la categoria enciada por GET
-        $categoria = $_GET['categoria'];
+        $categoria = $this->model->getCategorias();
         $this->view->mostrarCategoria($categoria);
     }
+
 
     function agregarCategoria(){
         if(isset($_POST['categoria'])){

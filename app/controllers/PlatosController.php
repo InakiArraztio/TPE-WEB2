@@ -9,24 +9,23 @@ class PlatosController{
 
     function __construct(){
         $this->view = new RestaurantView();
-        $this->model = new RestaurantModel();
-    }
-
-    function mostrarDB(){
-        $productos = $this->model->getPlatos();
-        //$this->view->mostrarRestaurante($productos);
+        $this->model = new PlatosModel();
     }
 
     function mostrarPlato(){
+        $platos = $this->model->getPlatos();
+        $this->view->mostrarPlatos($platos);
+    }
+
+   /* function mostrarPlato(){
         //Verificar datos obligatorios y valida la entrada de usuarios
         //Obtiene la categoria enciada por GET
         
         //Llama al model para obtener los productos
-        var_dump("vista");
         $platos = $this->model->getPlatos();
 
         $this->view->mostrarPlatos($platos);
-    }
+    }*/
 
     function agregarProducto(){
         //Lista de campos requeridos
@@ -59,7 +58,7 @@ class PlatosController{
     }
 
     function  quitarProducto($id){
-        $this->model->eliminarProducto($id);
+        $this->model->eliminarPlato($id);
         header('Location: ' . BASE_URL);
     }
 }

@@ -1,5 +1,5 @@
 <?php
-class RestaurantModel{
+class PlatosModel{
     private $db;
     function __construct(){
         $this->db = $this->connectionDb();
@@ -9,13 +9,12 @@ class RestaurantModel{
        return new PDO('mysql:host=localhost;' . 'dbname=restaurante;charset=utf8', 'root', '');
     }
     
-    function getPlatos(){//get plato
-        $query = $this->db->prepare('SELECT * FROM platos');//TENIA QUE LLAMAR A platos NO a categorias
+    function getPlatos() {
+        $query = $this->db->prepare('SELECT * FROM platos');
         $query->execute();
         $platos = $query->fetchAll(PDO::FETCH_OBJ);
         return $platos;
     }
-    
     /*function obtenerPlatos($platos){
         $query = $this->db->prepare('SELECT * FROM platos WHERE id_plato = ?');
         $query->execute([$platos]);

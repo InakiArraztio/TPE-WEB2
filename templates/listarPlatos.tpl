@@ -8,7 +8,7 @@
         </tr>
     </thead>
     <tbody>
-    {foreach from=$platos item=$plato}
+    {foreach from=$platos item=plato}
         <tr>
             <td>{$plato->nombre_plato}</td>
             <td>{$plato->precio}</td>

@@ -14,15 +14,11 @@ class RestaurantView {
     }
 
     // Función para mostrar platos
-    function mostrarPlatos($platos) {
-        $this->smarty->assign('platos', $platos);
-        $this->smarty->display('templates/listarplatos.tpl');
+    function mostrarCategoria($categoria) {
+        $this->smarty->assign('categoria', $categoria);
+        $this->smarty->display('templates/listarcategoria.tpl');
     }
 }
 ?>
-
-
-
-
 
 
