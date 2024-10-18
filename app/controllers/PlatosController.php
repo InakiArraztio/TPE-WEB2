@@ -1,8 +1,8 @@
 <?php
-require_once 'app/views/rest.view.php';
-require_once 'app/models/rest.model.php';
-
-class RestaurantController{
+require_once 'app\views\rest.view.php';
+require_once 'app\models\PlatosModel.php';
+//falta
+class PlatosController{
     //el controlador siempre usa atributos y vista
     private $model;
     private $view;
@@ -13,24 +13,19 @@ class RestaurantController{
     }
 
     function mostrarDB(){
-        $productos = $this->model->getCategorias();
-        $this->view->mostrarRestaurante($productos);
+        $productos = $this->model->getPlatos();
+        //$this->view->mostrarRestaurante($productos);
     }
 
-    function mostrarProducto(){
+    function mostrarPlato(){
         //Verificar datos obligatorios y valida la entrada de usuarios
-        if ((!isset($_GET['categoria'])) || empty($_GET['categoria'])) {
-            $this->view->mostrarError('Categoría no especificada');
-            return;
-        }
-
         //Obtiene la categoria enciada por GET
-        $categoria = $_GET['categoria'];
-
+        
         //Llama al model para obtener los productos
-        $productos = $this->model->obtenerProductosPorCategoria($categoria);
+        var_dump("vista");
+        $platos = $this->model->getPlatos();
 
-        $this->view->mostrarProductos($productos, $categoria);
+        $this->view->mostrarPlatos($platos);
     }
 
     function agregarProducto(){

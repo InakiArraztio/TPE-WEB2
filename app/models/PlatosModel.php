@@ -1,7 +1,4 @@
 <?php
-//Maneja la comunicacion con la BD
-require_once 'app/controllers/rest.controller.php';
-
 class RestaurantModel{
     private $db;
     function __construct(){
@@ -12,29 +9,30 @@ class RestaurantModel{
        return new PDO('mysql:host=localhost;' . 'dbname=restaurante;charset=utf8', 'root', '');
     }
     
-    function getCategorias(){//get plato
+    function getPlatos(){//get plato
         $query = $this->db->prepare('SELECT * FROM platos');//TENIA QUE LLAMAR A platos NO a categorias
         $query->execute();
-        $categorias = $query->fetchAll(PDO::FETCH_OBJ);
-        return $categorias;
+        $platos = $query->fetchAll(PDO::FETCH_OBJ);
+        return $platos;
     }
     
-    function obtenerProductosPorCategoria($categoria){
-        $query = $this->db->prepare('SELECT * FROM platos WHERE id_categoria = ?');
-        $query->execute([$categoria]);
+    /*function obtenerPlatos($platos){
+        $query = $this->db->prepare('SELECT * FROM platos WHERE id_plato = ?');
+        $query->execute([$platos]);
         $productos = $query->fetchAll(PDO::FETCH_OBJ);
     
         return $productos;
-    }
+    }*/
     
-    function insertarProducto($nombre, $precio, $categoria){
+    function insertarPlato($nombre, $precio, $categoria){
         $query = $this->db->prepare('INSERT INTO platos (nombre_plato, precio, id_categoria) VALUES (?,?,?)'); 
         $query->execute([$nombre, $precio, $categoria]);
         return $this->db->lastInsertId();
     }
     
-    function eliminarProducto($id){
+    function eliminarPlato($id){
         $query = $this->db->prepare('DELETE FROM platos WHERE id_plato = ?');
         $query->execute([$id]);
     }
+    
 }

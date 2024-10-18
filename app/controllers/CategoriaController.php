@@ -1,6 +1,6 @@
 <?php
 require_once 'app/views/rest.view.php';
-require_once 'app/models/rest.model.php';
+require_once 'app\models\CategoriasModel.php';
 class CategoriasController{
     //el controlador siempre usa atributos y vista
     private $model;
@@ -13,10 +13,9 @@ class CategoriasController{
 
     function mostrarDB(){
         $productos = $this->model->getCategorias();
-        $this->view->mostrarRestaurante($productos);
     }
 
-    function mostrarProducto(){
+    function mostrarCategoria(){
         //Verificar datos obligatorios y valida la entrada de usuarios
         if ((!isset($_GET['categoria'])) || empty($_GET['categoria'])) {
             $this->view->mostrarError('Categoría no especificada');
@@ -25,42 +24,24 @@ class CategoriasController{
 
         //Obtiene la categoria enciada por GET
         $categoria = $_GET['categoria'];
-
-        //Llama al model para obtener los productos
-        $productos = $this->model->obtenerProductosPorCategoria($categoria);
-
-        $this->view->mostrarProductos($productos, $categoria);
+        $this->view->mostrarCategoria($categoria);
     }
 
-    function agregarProducto(){
-        //Lista de campos requeridos
-        $camposRequeridos = ['nombre',  'precio', 'categoria'];
+    function agregarCategoria(){
+        if(isset($_POST['categoria'])){
+            $categoria = $_POST['categoria'];
+            $id = $this->model->insertarCategoria( $categoria);
 
-        //Validacion de campos
-        foreach($camposRequeridos as $campo) {
-            if(!isset($_POST[$campo])){
-                $this->view->mostrarError($campo . 'no especificado');
-                return;
+            if ($id) {//si es 0 "sale" por el else 
+                header('Location: '.BASE_URL);
+            } else {
+                echo "Error al insertar el producto";
             }
         }
-        //Asignacion de variables
-        $nombre = $_POST['nombre'];
-        $precio = $_POST['precio'];
-        $categoria = $_POST['categoria'];
-
-        var_dump($nombre, $precio, $categoria);
-        //Inserccion del producto
-        $id = $this->model->insertarProducto($nombre, $precio, $categoria);
-
-        if ($id) {//si es 0 "sale" por el else 
-            header('Location: ' . BASE_URL);
-        } else {
-            echo "Error al insertar el producto";
-        }
     }
 
-    function  quitarProducto($id){
-        $this->model->eliminarProducto($id);
+    function  quitarCategoria($id){
+        $this->model->eliminarCategoria($id);
         header('Location: ' . BASE_URL);
     }
 }
