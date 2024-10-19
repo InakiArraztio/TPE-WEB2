@@ -19,6 +19,11 @@ class PlatosView{
         $this->smarty->assign('categorias', $categorias);
         $this->smarty->display('templates/listarPlatos.tpl');
     }
+    function mostrarPlatosFiltrados($platos, $categorias) {
+        $this->smarty->assign('platos', $platos);
+        $this->smarty->assign('categorias', $categorias);
+        $this->smarty->display('templates\listarPlatosCategoria.tpl');
+    }
 }
 ?>
 

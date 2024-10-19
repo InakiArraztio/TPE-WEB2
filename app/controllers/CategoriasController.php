@@ -4,11 +4,13 @@ require_once 'app\models\CategoriasModel.php';
 class CategoriasController{
     //el controlador siempre usa atributos y vista
     private $model;
-    private $viewCategoria;
-    private $viewPlato;
+    private $view;
+    private $platosModel;
+    
     function __construct(){
         $this->view = new CategoriaView();
         $this->model = new CategoriasModel();
+        $this->platosModel = new PlatosModel();
     }
 
     function mostrarCategoria(){
@@ -35,9 +37,13 @@ class CategoriasController{
         $viewPlato->listarForm($categoria);
     }*/
 
-    function  quitarCategoria($id){
-        $this->model->eliminarCategoria($id);
-        header('Location: ' . BASE_URL);
+    function  quitarCategoria($id){ 
+        if(!$this->platosModel->getPlatos()){
+            $error=$this->model->eliminarCategoria($id);
+            header('Location: ' . BASE_URL);
+        } 
+        else
+            echo "error al eliminar categoria contiene platos";
     }
     function actualizarCategoria(){
         if(isset($_POST['categoria'])&&isset($_POST['id'])){
@@ -45,6 +51,6 @@ class CategoriasController{
             $id=$_POST['id'];
             $error=$this->model->modificarCategoria($categoria,$id);
         }
-        header('Location: ' . BASE_URL);
+         header('Location: ' . BASE_URL);
     }
 }

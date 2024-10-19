@@ -14,6 +14,16 @@ class CategoriasModel{
         $query->execute();
         return $query->fetchAll(PDO::FETCH_OBJ); // Asegúrate de que hay datos en la tabla
     }
+    function filtrarCategoria($id) {
+        
+        $query = $this->db->prepare('SELECT * FROM categorias WHERE id_categoria = ?');
+        
+       
+        $query->execute([$id]);
+        
+     
+        return $query->fetch(PDO::FETCH_OBJ);
+    }
     
     function insertarCategoria($categoria){
         $query = $this->db->prepare('INSERT INTO categorias (tipo_categoria) VALUES (?)'); 
@@ -27,10 +37,10 @@ class CategoriasModel{
 
     }
     function modificarCategoria($categoria,$id){
-        var_dump($id,$categoria);
         $query= $this->db->prepare("UPDATE `categorias` SET `tipo_categoria` = ? WHERE `id_categoria` = ?");
             
         $query->execute([$categoria,$id]);
+        return $this->db->lastInsertId();
     }
 
     

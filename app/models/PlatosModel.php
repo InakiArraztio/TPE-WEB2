@@ -15,6 +15,16 @@ class PlatosModel{
         $platos = $query->fetchAll(PDO::FETCH_OBJ);
         return $platos;
     }
+    function filtrarPlato($id) {
+        $query = $this->db->prepare('SELECT * FROM platos WHERE id_categoria = ?');
+    
+        
+        $query->execute([$id]);
+    
+        $platos = $query->fetchAll(PDO::FETCH_OBJ);
+        
+        return $platos;
+    }
     /*function obtenerPlatos($platos){
         $query = $this->db->prepare('SELECT * FROM platos WHERE id_plato = ?');
         $query->execute([$platos]);
@@ -33,5 +43,11 @@ class PlatosModel{
         $query = $this->db->prepare('DELETE FROM platos WHERE id_plato = ?');
         $query->execute([$id]);
     }
-    
+    function modificarPlato($plato,$precio,$id){
+        $query = $this->db->prepare("UPDATE `platos` SET `nombre_plato` = ?, `precio` = ? WHERE `id_plato` = ?");
+        $query->execute([$plato,$precio,$id]);
+        return $this->db->lastInsertId();
+    }
+
+
 }

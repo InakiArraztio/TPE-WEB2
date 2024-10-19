@@ -33,7 +33,10 @@ switch ($params[0]) { // en la primer posicion tengo la accion real
         $controller = new CategoriasController();
         $controller->actualizarCategoria();
         break;
-        
+    case 'listar_plato_categoria':
+        $controller = new PlatosController();
+        $controller->listarPlatoCategoria($params[1]);
+        break;
     case 'listar_plato':
         $controller = new PlatosController();
         $controller->mostrarPlato(); // muestra todas los productos
@@ -45,12 +48,14 @@ switch ($params[0]) { // en la primer posicion tengo la accion real
         break;
 
     case 'agregar_plato':
-
         $controller = new PlatosController();
         $controller->agregarPlato();
         break;
           
-    
+    case 'modificar_plato':
+        $controller = new PlatosController();
+        $controller->actualizarPlato();
+        break;
     /*case 'producto':
         $controller = new RestaurantController();
         $controller->mostrarProducto($params[1]); // muestra un producto

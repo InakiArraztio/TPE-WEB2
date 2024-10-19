@@ -6,7 +6,7 @@ class PlatosController{
     //el controlador siempre usa atributos y vista
     private $model;
     private $view;
-    private $categoria;
+    private $categoriaModel;
 
     function __construct(){
         $this->view = new PlatosView();
@@ -19,6 +19,17 @@ class PlatosController{
         $platos = $this->model->getPlatos();
         $this->view->mostrarPlatos($platos,$categorias);
     }
+    function listarPlatoCategoria($id) {
+        // Obtener las categorías filtradas por id
+        $categorias = $this->categoriaModel->filtrarCategoria($id);
+        
+        // Obtener los platos filtrados por id_categoria
+        $platos = $this->model->filtrarPlato($id);
+        
+        // Pasar los platos y las categorías a la vista
+        $this->view->mostrarPlatosFiltrados($platos, $categorias); // Asegúrate de que 'mostrarPlatos' esté preparado para recibir estos parámetros
+    }
+    
 
    /* function mostrarPlato(){
         //Verificar datos obligatorios y valida la entrada de usuarios
@@ -62,5 +73,14 @@ class PlatosController{
     function  quitarPlato($id){
         $this->model->eliminarPlato($id);
         header("Location: ../listar_plato");
+    }
+    function actualizarPlato(){
+        if(isset($_POST['plato'])&&isset($_POST['id'])&&isset($_POST['precio'])){
+            $plato = $_POST['plato'];
+            $id=$_POST['id'];
+            $precio=$_POST['precio'];
+            $error=$this->model->modificarPlato($plato,$precio,$id);
+        }
+        header("Location: listar_plato");
     }
 }
