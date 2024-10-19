@@ -1,24 +1,16 @@
 {include file="header.tpl"}
 {include file="formCategoria.tpl"}
-<table>
-    <thead>
-        <tr>
-            <th>Categoría</th>
-        </tr>
-    </thead>
-    <tbody>
     {foreach from=$categorias item=categoria}
-        <tr>
-
-            <td>{$categoria->tipo_categoria}</td>
-            <td>
-                <a href='modificar_categoria/{$categoria->id_categoria}' class='btn btn-primary'>Modificar</a>
-                <a href='eliminar_categoria/{$categoria->id_categoria}' class='btn btn-danger'>Eliminar</a>
-            </td>
-        </tr>  
+                <form action="modificar_categoria" method="POST" class="form-inline">
+                    <label for="tipo_categoria" class="mr-2">{$categoria->tipo_categoria}</label>
+                    <input type="hidden" name="id" value="{$categoria->id_categoria}">
+                    <input type="text" name="categoria" value="" required class="form-control mr-2">
+                    <a href='eliminar_categoria/{$categoria->id_categoria}' class='btn btn-danger'>Eliminar</a>
+                    <button type="submit" class="btn btn-primary">Modificar</button>
+                </form>
     {/foreach}
-    </tbody>
-</table>
+
+
 {include file="footer.tpl"}
 
 

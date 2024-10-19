@@ -39,4 +39,12 @@ class CategoriasController{
         $this->model->eliminarCategoria($id);
         header('Location: ' . BASE_URL);
     }
+    function actualizarCategoria(){
+        if(isset($_POST['categoria'])&&isset($_POST['id'])){
+            $categoria = $_POST['categoria'];
+            $id=$_POST['id'];
+            $error=$this->model->modificarCategoria($categoria,$id);
+        }
+        header('Location: ' . BASE_URL);
+    }
 }

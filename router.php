@@ -26,9 +26,12 @@ switch ($params[0]) { // en la primer posicion tengo la accion real
         $controller->quitarCategoria($params[1]);
         break;
     case 'agregar_categoria':
-        echo "hola";
         $controller = new CategoriasController();
         $controller->agregarCategoria();
+        break;
+    case 'modificar_categoria':
+        $controller = new CategoriasController();
+        $controller->actualizarCategoria();
         break;
         
     case 'listar_plato':
@@ -42,6 +45,7 @@ switch ($params[0]) { // en la primer posicion tengo la accion real
         break;
 
     case 'agregar_plato':
+
         $controller = new PlatosController();
         $controller->agregarPlato();
         break;

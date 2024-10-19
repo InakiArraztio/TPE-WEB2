@@ -24,6 +24,14 @@ class CategoriasModel{
     function eliminarCategoria($id){
         $query = $this->db->prepare('DELETE FROM categorias WHERE id_categoria = ?');
         $query->execute([$id]);
+
     }
+    function modificarCategoria($categoria,$id){
+        var_dump($id,$categoria);
+        $query= $this->db->prepare("UPDATE `categorias` SET `tipo_categoria` = ? WHERE `id_categoria` = ?");
+            
+        $query->execute([$categoria,$id]);
+    }
+
     
 }
