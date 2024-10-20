@@ -32,7 +32,13 @@ class PlatosModel{
     
         return $productos;
     }*/
-    
+
+    function filtrarPlatoPorID($id) {
+        $query = $this->db->prepare('SELECT * FROM platos WHERE id_plato = ?');
+        $query->execute([$id]);
+        return $query->fetch(PDO::FETCH_OBJ);
+    }
+
     function insertarPlato($nombre, $precio, $categoria){
         $query = $this->db->prepare('INSERT INTO platos (nombre_plato, precio, id_categoria) VALUES (?,?,?)'); 
         $query->execute([$nombre, $precio, $categoria]);

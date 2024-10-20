@@ -1,7 +1,7 @@
 <?php
 require_once 'app\controllers\PlatosController.php';
 require_once 'app\controllers\CategoriasController.php';
-
+require_once 'app\controllers\AuthController.php';
 
 
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
@@ -56,6 +56,12 @@ switch ($params[0]) { // en la primer posicion tengo la accion real
         $controller = new PlatosController();
         $controller->actualizarPlato();
         break;
+
+    case 'mostrar_plato': //hay que cambiarlo
+        $controller = new PlatosController();
+        $controller->mostrarUnPlato($params[1]);
+        break;
+
     /*case 'producto':
         $controller = new RestaurantController();
         $controller->mostrarProducto($params[1]); // muestra un producto
@@ -68,6 +74,18 @@ switch ($params[0]) { // en la primer posicion tengo la accion real
     
         
     */
+    case 'login':
+        $controller = new AuthController();
+        $controller->showLogin(); //manejo login
+        break;
+    case 'logout':
+        $controller = new AuthController();
+        $controller->logout(); // manejo logout 
+        break;
+    case 'auth':
+        $controller = new AuthController();
+        $controller->auth(); // manejo la autenticacion
+        break;
     default: 
         echo('404 Page not found'); 
         break;

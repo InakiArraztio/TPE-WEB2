@@ -30,6 +30,16 @@ class PlatosController{
         $this->view->mostrarPlatosFiltrados($platos, $categorias); // Asegúrate de que 'mostrarPlatos' esté preparado para recibir estos parámetros
     }
     
+    function mostrarUnPlato($id) {
+        $plato = $this->model->filtrarPlatoPorID($id);
+        $categorias = $this->categoriaModel->getCategorias();
+        if($plato) {
+            $this->view->mostrarPlato($plato,$categorias);
+        }else{
+            $this->view->mostrarError("El plato solicitado no existe");
+        }
+    }
+    
 
    /* function mostrarPlato(){
         //Verificar datos obligatorios y valida la entrada de usuarios
@@ -59,7 +69,7 @@ class PlatosController{
             $categoria = $_POST['id_categoria'];
             $id = $this->model->insertarPlato($nombre, $precio, $categoria);
             if ($id) {//si es 0 "sale" por el else 
-                header("Location: listar_plato");
+                header("Location: " . BASE_URL . "listar_plato");
             } else {
                 echo "Error al insertar el producto";
             }
@@ -81,6 +91,6 @@ class PlatosController{
             $precio=$_POST['precio'];
             $error=$this->model->modificarPlato($plato,$precio,$id);
         }
-        header("Location: listar_plato");
+        header("Location: " . BASE_URL . "listar_plato");
     }
 }
