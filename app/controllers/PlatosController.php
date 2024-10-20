@@ -19,6 +19,30 @@ class PlatosController{
         $platos = $this->model->getPlatos();
         $this->view->mostrarPlatos($platos,$categorias);
     }
+
+    // Función para buscar un plato por ID a través de un formulario
+    function buscarPlatoPorID() {
+        if (isset($_POST['id_plato'])) {
+            $platoID = $_POST['id_plato'];
+            // Llamamos al modelo para filtrar el plato por ID
+            $plato = $this->model->filtrarPlatoPorID($platoID);
+            // Obtenemos las categorías para mostrarlas junto con el plato
+            $categorias = $this->categoriaModel->getCategorias();
+
+            // Si el plato fue encontrado
+            if ($plato) {
+                // Llamamos a la vista para mostrar el plato
+                $this->view->mostrarPlatoBuscado($plato, $categorias);
+            } else {
+                // En caso de que no exista el plato, mostramos un error
+                $this->view->mostrarError("El plato con ID $platoID no existe.");
+            }
+        } else {
+            // En caso de que no se haya enviado un ID en el formulario
+            $this->view->mostrarError("No se ha proporcionado ningún ID de plato.");
+        }
+    }
+
     function listarPlatoCategoria($id) {
         // Obtener las categorías filtradas por id
         $categorias = $this->categoriaModel->filtrarCategoria($id);

@@ -2,7 +2,7 @@
 
 {if !isset($smarty.session.id_usuario)}
     <div class="mt-5 w-25 mx-auto">
-        <form method="POST" action="auth">
+        <form method="POST" action="login">
         <div class="form-group">
             <label for="email">Email</label>
             <input type="email" required class="form-control" id="email" name="email" aria-describedby="emailHelp">

@@ -57,11 +57,15 @@ switch ($params[0]) { // en la primer posicion tengo la accion real
         $controller->actualizarPlato();
         break;
 
-    case 'mostrar_plato': //hay que cambiarlo
+    case 'mostrar_plato':
         $controller = new PlatosController();
         $controller->mostrarUnPlato($params[1]);
         break;
 
+    case 'buscar_plato':
+        $controller = new PlatosController();
+        $controller->buscarPlatoPorID();
+        break;
     /*case 'producto':
         $controller = new RestaurantController();
         $controller->mostrarProducto($params[1]); // muestra un producto

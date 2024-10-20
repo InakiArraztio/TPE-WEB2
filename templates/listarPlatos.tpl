@@ -1,5 +1,44 @@
 {include file="header.tpl"}
 {include file="formPlato.tpl"}
+
+<!-- Formulario para filtrar por ID de plato -->
+<div class="mt-4">
+    <form method="POST" action="buscar_plato">
+        <div class="form-group">
+            <label for="id_plato">Buscar Plato por ID</label>
+            <input type="number" class="form-control w-25" id="platoID" name="id_plato" placeholder="Ingrese el ID del plato" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Buscar</button>
+    </form>
+</div>
+
+<!-- Mostrar el resultado de la búsqueda del plato por ID -->
+{if isset($platoBuscado)}
+    <h3 class="mt-4">Resultado de la búsqueda:</h3>
+    <table class="table table-striped table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Categoría</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{$platoBuscado->nombre_plato}</td>
+                <td>{$platoBuscado->precio}</td>
+                <td>{$platoBuscado->categoria}</td> <!-- Muestra la categoría del plato -->
+            </tr>
+        </tbody>
+    </table>
+{elseif isset($error)}
+    <!-- Si no se encuentra el plato, muestra un mensaje de error -->
+    <div class="alert alert-danger mt-4">
+        {$error}
+    </div>
+{/if}
+
+<!-- Tabla con todos los platos -->
 <table class="table table-striped table-bordered">
     <thead class="thead-dark">
         <tr>
@@ -40,6 +79,6 @@
     </tbody>
 </table>
 
-
 {include file="footer.tpl"}
+
 

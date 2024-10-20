@@ -1,4 +1,5 @@
 <?php
+require_once 'config.php';
 class PlatosModel{
     private $db;
     function __construct(){
@@ -6,7 +7,7 @@ class PlatosModel{
     }
 
     private function connectionDb(){
-       return new PDO('mysql:host=localhost;' . 'dbname=restaurante;charset=utf8', 'root', '');
+       return new PDO('mysql:host=' . DB_HOST . ';dbname='. DB_NAME .';charset=utf8', DB_USER, DB_PASS);
     }
     
     function getPlatos() {

@@ -30,6 +30,11 @@ class PlatosView{
         $this->smarty->assign('categorias', $categorias);
         $this->smarty->display('templates\listarPlatosCategoria.tpl');
     }
+    function mostrarPlatoBuscado($plato,$categorias){
+        $this->smarty->assign('platoBuscado', $plato);
+        $this->smarty->assign('categorias', $categorias);
+        $this->smarty->display('templates\buscarPlato.tpl');
+    }
 }
 ?>
 
