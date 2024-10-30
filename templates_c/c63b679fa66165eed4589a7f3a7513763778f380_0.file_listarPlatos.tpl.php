@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.4.1, created on 2024-10-19 05:17:48
+/* Smarty version 5.4.1, created on 2024-10-30 15:54:20
   from 'file:templates/listarPlatos.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.4.1',
-  'unifunc' => 'content_671324dc18f687_53924652',
+  'unifunc' => 'content_6722489c7b2fe7_38483925',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'c63b679fa66165eed4589a7f3a7513763778f380' => 
     array (
       0 => 'templates/listarPlatos.tpl',
-      1 => 1729307864,
+      1 => 1730299812,
       2 => 'file',
     ),
   ),
@@ -23,11 +23,54 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ))) {
-function content_671324dc18f687_53924652 (\Smarty\Template $_smarty_tpl) {
+function content_6722489c7b2fe7_38483925 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\web2\\TPE\\templates';
 $_smarty_tpl->renderSubTemplate("file:header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), (int) 0, $_smarty_current_dir);
 $_smarty_tpl->renderSubTemplate("file:formPlato.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), (int) 0, $_smarty_current_dir);
 ?>
+
+<!-- Formulario para filtrar por ID de plato -->
+<div class="mt-4">
+    <form method="POST" action="buscar_plato">
+        <div class="form-group">
+            <label for="id_plato">Buscar Plato por ID</label>
+            <input type="number" class="form-control w-25" id="platoID" name="id_plato" placeholder="Ingrese el ID del plato" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Buscar</button>
+    </form>
+</div>
+
+<!-- Mostrar el resultado de la búsqueda del plato por ID -->
+<?php if ((null !== ($_smarty_tpl->getValue('platoBuscado') ?? null))) {?>
+    <h3 class="mt-4">Resultado de la búsqueda:</h3>
+    <table class="table table-striped table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Categoría</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><?php echo $_smarty_tpl->getValue('platoBuscado')->nombre_plato;?>
+</td>
+                <td><?php echo $_smarty_tpl->getValue('platoBuscado')->precio;?>
+</td>
+                <td><?php echo $_smarty_tpl->getValue('platoBuscado')->categoria;?>
+</td> <!-- Muestra la categoría del plato -->
+            </tr>
+        </tbody>
+    </table>
+<?php } elseif ((null !== ($_smarty_tpl->getValue('error') ?? null))) {?>
+    <!-- Si no se encuentra el plato, muestra un mensaje de error -->
+    <div class="alert alert-danger mt-4">
+        <?php echo $_smarty_tpl->getValue('error');?>
+
+    </div>
+<?php }?>
+
+<!-- Tabla con todos los platos -->
 <table class="table table-striped table-bordered">
     <thead class="thead-dark">
         <tr>
@@ -87,9 +130,9 @@ $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
     </tbody>
 </table>
 
-
 <?php $_smarty_tpl->renderSubTemplate("file:footer.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), (int) 0, $_smarty_current_dir);
 ?>
+
 
 <?php }
 }

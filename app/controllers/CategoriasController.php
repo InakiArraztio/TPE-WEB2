@@ -38,7 +38,7 @@ class CategoriasController{
     }*/
 
     function  quitarCategoria($id){ 
-        if(!$this->platosModel->getPlatos()){
+        if(empty($this->platosModel->filtrarPlato($id) )){
             $error=$this->model->eliminarCategoria($id);
             header('Location: ' . BASE_URL);
         } 

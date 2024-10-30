@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.4.1, created on 2024-10-18 23:58:15
+/* Smarty version 5.4.1, created on 2024-10-30 15:50:26
   from 'file:header.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.4.1',
-  'unifunc' => 'content_6712d9f745ea77_07937886',
+  'unifunc' => 'content_672247b291e924_48183592',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '2b89cba24279e4872a242d81b75cb370c759c3c3' => 
     array (
       0 => 'header.tpl',
-      1 => 1729288690,
+      1 => 1730299812,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_6712d9f745ea77_07937886 (\Smarty\Template $_smarty_tpl) {
+function content_672247b291e924_48183592 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\web2\\TPE\\templates';
 ?><!DOCTYPE html>
 <html lang="en">
@@ -54,7 +54,7 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\web2\\TPE\\templates';
                             <a class="nav-link" aria-current="page" href="listar_plato">Productos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="about">login</a>
+                            <a class="nav-link" aria-current="page" href="login">Login</a>
                         </li>
                     </ul>
                 </div>

@@ -52,6 +52,7 @@ class PlatosController{
         
         // Pasar los platos y las categorías a la vista
         $this->view->mostrarPlatosFiltrados($platos, $categorias); // Asegúrate de que 'mostrarPlatos' esté preparado para recibir estos parámetros
+        return $platos;
     }
     
     function mostrarUnPlato($id) {
