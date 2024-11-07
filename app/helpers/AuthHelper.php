@@ -17,12 +17,4 @@ class AuthHelper{
         AuthHelper::init();
         session_destroy();
     }
-    //Verifica si el usuario está autenticado.
-     static public function verify() {
-        AuthHelper::init();
-        if(!isset($_SESSION['id_usuario'])){
-            header('Location:' . BASE_URL . 'login');
-            die();
-        }
-    }
 }

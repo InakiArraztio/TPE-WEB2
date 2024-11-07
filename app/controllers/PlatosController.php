@@ -8,8 +8,8 @@ class PlatosController{
     private $view;
     private $categoriaModel;
 
-    function __construct(){
-        $this->view = new PlatosView();
+    function __construct($res){
+        $this->view = new PlatosView($res);
         $this->model = new PlatosModel();
         $this->categoriaModel = new CategoriasModel();
     }

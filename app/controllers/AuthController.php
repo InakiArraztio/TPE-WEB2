@@ -27,7 +27,6 @@ class AuthController {
             }
             // Obtener usuario desde la base de datos
             $user = $this->model->getByEmail($email);
-            
             // Verifico si existe el usuario y si la contraseña es correcta
             if($user && password_verify($password, $user->password)){
                 AuthHelper::login($user);  // Si es correcto, iniciar sesión
@@ -42,7 +41,7 @@ class AuthController {
     }
     public function logout(){
         AuthHelper::logout();
-        header('Location: ' . BASE_URL . 'login');
+        header('Location: ' . BASE_URL);
         exit();
     }
 }

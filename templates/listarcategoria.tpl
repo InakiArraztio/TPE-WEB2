@@ -8,12 +8,14 @@
                         {$categoria->tipo_categoria}
                     </a>
                 </h4>
+                {if $user}
                 <form action="modificar_categoria" method="POST" class="form-inline">
                     <input type="hidden" name="id" value="{$categoria->id_categoria}">
                     <input type="text" name="categoria" value="" required class="form-control mr-2">
                     <a href='eliminar_categoria/{$categoria->id_categoria}' class='btn btn-danger mr-2'>Eliminar</a>
                     <button type="submit" class="btn btn-primary">Modificar</button>
                 </form>
+                {/if}
             </li>
         {/foreach}
     </ol>

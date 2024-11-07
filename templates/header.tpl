@@ -26,9 +26,16 @@
                         <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="listar_plato">Productos</a>
                         </li>
+                        {if !$user}
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="login">Login</a>
+                            <a class="nav-link" aria-current="page" href="showlogin">Login</a>
                         </li>
+                        {/if}
+                        {if $user}
+                        <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="logout">Cerrar session</a>
+                        </li>
+                        {/if}
                     </ul>
                 </div>
             </div>

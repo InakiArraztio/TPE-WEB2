@@ -3,9 +3,10 @@ require_once('libs\smarty\libs\Smarty.class.php');
 
 class PlatosView{
     private $smarty;
-
-    function __construct() {
+    private $user = null;
+    function __construct($user) {
         $this->smarty = new Smarty\Smarty; 
+        $this->user=$user;
     }
 
     // Función para mostrar errores

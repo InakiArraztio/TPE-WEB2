@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.4.1, created on 2024-10-19 04:55:57
+/* Smarty version 5.4.1, created on 2024-11-07 20:39:33
   from 'file:templates\listarcategoria.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.4.1',
-  'unifunc' => 'content_67131fbd6cbbd9_48116055',
+  'unifunc' => 'content_672d17759275e7_47144015',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'd2cc556d77f8191b82fb7988e5db5783669101fe' => 
     array (
       0 => 'templates\\listarcategoria.tpl',
-      1 => 1729305556,
+      1 => 1731008368,
       2 => 'file',
     ),
   ),
@@ -23,7 +23,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ))) {
-function content_67131fbd6cbbd9_48116055 (\Smarty\Template $_smarty_tpl) {
+function content_672d17759275e7_47144015 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\web2\\TPE\\templates';
 $_smarty_tpl->renderSubTemplate("file:header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), (int) 0, $_smarty_current_dir);
 $_smarty_tpl->renderSubTemplate("file:formCategoria.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), (int) 0, $_smarty_current_dir);
@@ -43,6 +43,7 @@ $foreach0DoElse = false;
 
                     </a>
                 </h4>
+                <?php if ($_smarty_tpl->getValue('user')) {?>
                 <form action="modificar_categoria" method="POST" class="form-inline">
                     <input type="hidden" name="id" value="<?php echo $_smarty_tpl->getValue('categoria')->id_categoria;?>
 ">
@@ -51,6 +52,7 @@ $foreach0DoElse = false;
 ' class='btn btn-danger mr-2'>Eliminar</a>
                     <button type="submit" class="btn btn-primary">Modificar</button>
                 </form>
+                <?php }?>
             </li>
         <?php
 }

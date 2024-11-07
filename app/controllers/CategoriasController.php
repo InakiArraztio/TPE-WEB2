@@ -7,8 +7,8 @@ class CategoriasController{
     private $view;
     private $platosModel;
     
-    function __construct(){
-        $this->view = new CategoriaView();
+    function __construct($res){
+        $this->view = new CategoriaView($res->user);
         $this->model = new CategoriasModel();
         $this->platosModel = new PlatosModel();
     }
