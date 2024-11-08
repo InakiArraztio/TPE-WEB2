@@ -9,9 +9,9 @@ class PlatosController{
     private $categoriaModel;
 
     function __construct($res){
-        $this->view = new PlatosView($res);
+        $this->view = new PlatosView($res->user);
         $this->model = new PlatosModel();
-        $this->categoriaModel = new CategoriasModel();
+        $this->categoriaModel = new CategoriasModel($res);
     }
 
     function mostrarPlato(){

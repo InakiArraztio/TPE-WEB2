@@ -13,9 +13,12 @@ class CategoriasController{
         $this->platosModel = new PlatosModel();
     }
 
-    function mostrarCategoria(){
-        $categoria = $this->model->getCategorias();
-        $this->view->mostrarCategoria($categoria);
+    function mostrarCategoria($error=null){
+        $categorias = $this->model->getCategorias();
+        foreach($categorias as $categoria){
+            $categoria->cantidadPlatos=$this->platosModel->filtrarPlato($categoria->id_categoria);
+        }
+        $this->view->mostrarCategoria($categorias,$error);
     }
 
 
@@ -27,7 +30,7 @@ class CategoriasController{
             if ($id) {//si es 0 "sale" por el else 
                 header('Location: '.BASE_URL);
             } else {
-                echo "Error al insertar el producto";
+                $this->mostrarCategoria("Error al insertar el producto");
             }
         }
     }
@@ -42,8 +45,10 @@ class CategoriasController{
             $error=$this->model->eliminarCategoria($id);
             header('Location: ' . BASE_URL);
         } 
-        else
-            echo "error al eliminar categoria contiene platos";
+        else{
+            $this->mostrarCategoria("error al eliminar categoria contiene platos");
+        }
+            
     }
     function actualizarCategoria(){
         if(isset($_POST['categoria'])&&isset($_POST['id'])){

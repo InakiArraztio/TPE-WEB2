@@ -10,13 +10,10 @@ class CategoriaView {
         $this->user = $user;
     }
 
-    // Función para mostrar errores
-    function mostrarError($error) {
-        //echo "<div class='error-message'><h2>Error: $error.</h2></div>";
-    }
 
     // Función para mostrar platos
-    function mostrarCategoria($categoria) {
+    function mostrarCategoria($categoria,$error=null) {
+        $this->smarty->assign('error',$error);
         $this->smarty->assign('user',$this->user);
         $this->smarty->assign('categorias', $categoria);
         $this->smarty->display('templates\listarcategoria.tpl');

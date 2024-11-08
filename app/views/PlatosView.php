@@ -22,11 +22,13 @@ class PlatosView{
 
     // Función para mostrar platos
     function mostrarPlatos($platos,$categorias) {
+       
         $this->smarty->assign('platos', $platos);
         $this->smarty->assign('categorias', $categorias);
         $this->smarty->display('templates/listarPlatos.tpl');
     }
     function mostrarPlatosFiltrados($platos, $categorias) {
+        $this->smarty->assign('user',$this->user);
         $this->smarty->assign('platos', $platos);
         $this->smarty->assign('categorias', $categorias);
         $this->smarty->display('templates\listarPlatosCategoria.tpl');

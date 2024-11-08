@@ -24,16 +24,16 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="listar_plato">Productos</a>
+                            <a class="nav-link" aria-current="page" href="{BASE_URL}/listar_plato">Productos</a>
                         </li>
                         {if !$user}
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="showlogin">Login</a>
+                            <a class="nav-link" aria-current="page" href="{BASE_URL}/showlogin">Login</a>
                         </li>
                         {/if}
                         {if $user}
                         <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="logout">Cerrar session</a>
+                        <a class="nav-link" aria-current="page" href="{BASE_URL}/logout">Cerrar session</a>
                         </li>
                         {/if}
                     </ul>

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.4.1, created on 2024-11-07 20:54:44
+/* Smarty version 5.4.1, created on 2024-11-08 15:52:52
   from 'file:header.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.4.1',
-  'unifunc' => 'content_672d1b04397b32_62380431',
+  'unifunc' => 'content_672e25c490dc94_71085946',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '2b89cba24279e4872a242d81b75cb370c759c3c3' => 
     array (
       0 => 'header.tpl',
-      1 => 1731009282,
+      1 => 1731077569,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_672d1b04397b32_62380431 (\Smarty\Template $_smarty_tpl) {
+function content_672e25c490dc94_71085946 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\web2\\TPE\\templates';
 ?><!DOCTYPE html>
 <html lang="en">
@@ -51,16 +51,19 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\web2\\TPE\\templates';
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="listar_plato">Productos</a>
+                            <a class="nav-link" aria-current="page" href="<?php echo BASE_URL;?>
+/listar_plato">Productos</a>
                         </li>
                         <?php if (!$_smarty_tpl->getValue('user')) {?>
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="showlogin">Login</a>
+                            <a class="nav-link" aria-current="page" href="<?php echo BASE_URL;?>
+/showlogin">Login</a>
                         </li>
                         <?php }?>
                         <?php if ($_smarty_tpl->getValue('user')) {?>
                         <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="logout">Cerrar session</a>
+                        <a class="nav-link" aria-current="page" href="<?php echo BASE_URL;?>
+/logout">Cerrar session</a>
                         </li>
                         <?php }?>
                     </ul>
