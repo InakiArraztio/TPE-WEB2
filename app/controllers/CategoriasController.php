@@ -22,16 +22,20 @@ class CategoriasController{
     }
 
 
-    function agregarCategoria(){
-        if(isset($_POST['categoria'])){
-            $categoria = $_POST['categoria'];
-            $id = $this->model->insertarCategoria( $categoria);
+    function agregarCategoria($res){
+        if($res->user!=null){
+            if(isset($_POST['categoria'])){
+                $categoria = $_POST['categoria'];
+                $id = $this->model->insertarCategoria( $categoria);
 
-            if ($id) {//si es 0 "sale" por el else 
-                header('Location: '.BASE_URL);
-            } else {
-                $this->mostrarCategoria("Error al insertar el producto");
+                if ($id) {//si es 0 "sale" por el else 
+                    header('Location: '.BASE_URL);
+                } else {
+                    $this->mostrarCategoria("Error al insertar el producto");
+                }
             }
+        }else{
+            $this->mostrarCategoria("Error al actualizar, no esta logueado");
         }
     }
     /*function mostrarCategoriaForm(){
@@ -40,22 +44,33 @@ class CategoriasController{
         $viewPlato->listarForm($categoria);
     }*/
 
-    function  quitarCategoria($id){ 
-        if(empty($this->platosModel->filtrarPlato($id) )){
-            $error=$this->model->eliminarCategoria($id);
-            header('Location: ' . BASE_URL);
-        } 
-        else{
-            $this->mostrarCategoria("error al eliminar categoria contiene platos");
+    function  quitarCategoria($id,$res){ 
+        if($res->user!=null){
+            if(empty($this->platosModel->filtrarPlato($id) )){
+                $error=$this->model->eliminarCategoria($id);
+                header('Location: ' . BASE_URL);
+            } 
+            else{
+                $this->mostrarCategoria("error al eliminar categoria contiene platos");
+            }
+        }else{
+            $this->mostrarCategoria("Error al actualizar, no esta logueado");
         }
             
     }
-    function actualizarCategoria(){
-        if(isset($_POST['categoria'])&&isset($_POST['id'])){
-            $categoria = $_POST['categoria'];
-            $id=$_POST['id'];
-            $error=$this->model->modificarCategoria($categoria,$id);
+    function actualizarCategoria($res){
+        if($res->user!=null){
+            if(isset($_POST['categoria'])&&isset($_POST['id'])){
+                $categoria = $_POST['categoria'];
+                $id=$_POST['id'];
+                $error=$this->model->modificarCategoria($categoria,$id);
+            }
+             header('Location: ' . BASE_URL);
+        }else{
+            $this->mostrarCategoria("Error al actualizar, no esta logueado");
         }
-         header('Location: ' . BASE_URL);
+
+
+        
     }
 }

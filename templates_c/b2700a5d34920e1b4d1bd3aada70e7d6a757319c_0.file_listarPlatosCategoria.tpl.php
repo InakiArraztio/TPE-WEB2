@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.4.1, created on 2024-11-08 15:51:17
+/* Smarty version 5.4.1, created on 2024-11-08 16:15:22
   from 'file:templates\listarPlatosCategoria.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.4.1',
-  'unifunc' => 'content_672e2565688705_90430615',
+  'unifunc' => 'content_672e2b0a0096c8_81822961',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b2700a5d34920e1b4d1bd3aada70e7d6a757319c' => 
     array (
       0 => 'templates\\listarPlatosCategoria.tpl',
-      1 => 1731077471,
+      1 => 1731078916,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ))) {
-function content_672e2565688705_90430615 (\Smarty\Template $_smarty_tpl) {
+function content_672e2b0a0096c8_81822961 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\web2\\TPE\\templates';
 $_smarty_tpl->renderSubTemplate("file:header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), (int) 0, $_smarty_current_dir);
 ?>
@@ -33,10 +33,6 @@ $_smarty_tpl->renderSubTemplate("file:header.tpl", $_smarty_tpl->cache_id, $_sma
         <tr>
             <th>Nombre</th>
             <th>Precio</th>
-            <?php if ($_smarty_tpl->getValue('user')) {?>
-                <th>Accion</th>
-            <?php }?>
-             <!-- Columna para los botones de acciones -->
         </tr>
     </thead>
     <tbody>
@@ -51,12 +47,6 @@ $foreach0DoElse = false;
 </td>
             <td><?php echo $_smarty_tpl->getValue('plato')->precio;?>
 </td>
-            <?php if ($_smarty_tpl->getValue('user')) {?>
-            <td>
-                <a href='eliminar_plato/<?php echo $_smarty_tpl->getValue('plato')->id_plato;?>
-' class='btn btn-danger'>Eliminar</a>
-            </td>
-            <?php }?>
         </tr>
         <?php
 }

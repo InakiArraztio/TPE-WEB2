@@ -27,17 +27,17 @@ switch ($params[0]) { // en la primer posicion tengo la accion real
     case 'eliminar_categoria':
         sessionAuthMiddleware($res);
         $controller = new CategoriasController($res);
-        $controller->quitarCategoria($params[1]);
+        $controller->quitarCategoria($params[1],$res);
         break;
     case 'agregar_categoria':
         sessionAuthMiddleware($res);
-        $controller = new CategoriasController($res);
+        $controller = new CategoriasController($res,$res);
         $controller->agregarCategoria();
         break;
     case 'modificar_categoria':
         sessionAuthMiddleware($res);
         $controller = new CategoriasController($res);
-        $controller->actualizarCategoria();
+        $controller->actualizarCategoria($res);
         break;
     case 'listar_plato_categoria':
         sessionAuthMiddleware($res);
