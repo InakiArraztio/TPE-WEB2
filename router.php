@@ -32,7 +32,7 @@ switch ($params[0]) { // en la primer posicion tengo la accion real
     case 'agregar_categoria':
         sessionAuthMiddleware($res);
         $controller = new CategoriasController($res,$res);
-        $controller->agregarCategoria();
+        $controller->agregarCategoria($res);
         break;
     case 'modificar_categoria':
         sessionAuthMiddleware($res);
